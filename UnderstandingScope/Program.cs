@@ -8,8 +8,55 @@ namespace UnderstandingScope
 {
     class Program
     {
+        private static string k = "";
+
         static void Main(string[] args)
         {
+            string j = "";
+
+            for (int i = 0; i < 10; i++)
+            {
+                j = i.ToString();
+                k = i.ToString();
+                Console.WriteLine(i);
+
+                if (i == 9)
+                {
+                    string l = i.ToString();
+                }
+                //Console.WriteLine("Outside of the for l: " + l); Does not work
+
+            }
+            //Console.WriteLine(i);
+            Console.WriteLine("Outside of the for j: " + j);
+            Console.WriteLine("Outside of the for k: " + k);
+            // Console.WriteLine("Outside of the for l: " + l); Does not work
+
+            HelperMethod();
+
+            Car myCar = new Car();
+            myCar.DoSomething();
+
+            Console.ReadLine();
+        }
+        
+        static void HelperMethod()
+        {
+            Console.WriteLine("Value of k from the HelperMethod(): " + k);
+            // Console.WriteLine("Value of j from the HelperMethod(): " + j); Does not work, out of scope/context.
+        }
+    }
+
+    class Car
+    {
+        public void DoSomething()
+        {
+            Console.WriteLine(helperMethod());
+        }
+
+        private string helperMethod()
+        {
+            return "Hello world!";
         }
     }
 }
